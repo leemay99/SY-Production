@@ -49,6 +49,7 @@ class ItemController extends Controller
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
                 'type' => $request->type,
+                'price' => $request->price,
                 'detail' => $request->detail,
             ]);
 
@@ -56,5 +57,26 @@ class ItemController extends Controller
         }
 
         return view('item.add');
+    }
+
+    /**
+     * 新しい機能
+     */
+    public function abc()
+    {
+        // 処理
+    }
+        
+    
+
+    /**
+     * 商品削除
+     */
+    public function delete(Request $request)
+    {
+        $item = Item::find($request->id);
+        $item->delete();
+
+        return redirect('/items');
     }
 }
