@@ -48,9 +48,10 @@ class ItemController extends Controller
             Item::create([
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
+                'code' => $request->code,
                 'type' => $request->type,
-                'price' => $request->price,
                 'detail' => $request->detail,
+                'price' => $request->price,
             ]);
 
             return redirect('/items');
@@ -59,15 +60,6 @@ class ItemController extends Controller
         return view('item.add');
     }
 
-    /**
-     * 新しい機能
-     */
-    public function abc()
-    {
-        // 処理
-    }
-        
-    
 
     /**
      * 商品削除
@@ -79,4 +71,14 @@ class ItemController extends Controller
 
         return redirect('/items');
     }
+ 
+    /**
+    *新しい画面
+    */
+    public function abc()
+    {
+        return view('item.abc');
+    }
+
+    
 }

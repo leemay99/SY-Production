@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Middleware;
+use App\Providers;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +28,6 @@ Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
-    Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
-    Route::get('/abc', [App\Http\Controoler\ItemController::class, 'abc']);
+    Route::get('/abc', [App\Http\Controllers\ItemController::class, 'abc']);
     Route::post('/delete',[App\Http\Controllers\ItemController::class, 'delete']);
 });

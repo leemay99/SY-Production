@@ -27,6 +27,7 @@ $ composer install
 * フロント環境構築
 ```
 $ npm install
+```
 $ npm run dev
 ```
 * マイグレーション
