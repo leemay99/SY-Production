@@ -3,11 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>ゴルフサプリ！</h1>
+    <h1>家電サプリ！</h1>
 @stop
 
 @section('content')
-    <p>エンジョイゴルファーのお役立ちサイト。</p>
+    <p>日常のお役立ちサイト。</p>
 @stop
 
 @section('css')

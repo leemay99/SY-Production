@@ -21,7 +21,7 @@ class ItemController extends Controller
     /**
      * 商品一覧
      */
-    public function index()
+    public function index(Request $request)
     {
         // 商品一覧取得
         $items = Item
@@ -33,33 +33,43 @@ class ItemController extends Controller
     }
 
     /**
-     * 商品登録
+     * 検索
      */
-    public function add(Request $request)
+    public function search(Request $request)
     {
-        // POSTリクエストのとき
+        
+        dd($request->search);
+        
+    }
+               
+
+
+    /**
+     * 商品登録
+    */
+     public function add(Request $request)
+    {
+      // POSTリクエストのとき
         if ($request->isMethod('post')) {
             // バリデーション
-            $this->validate($request, [
-                'name' => 'required|max:100',
-            ]);
+             $this->validate($request, [
+                 'name' => 'required|max:100',
+             ]);
 
-            // 商品登録
-            Item::create([
-                'user_id' => Auth::user()->id,
-                'name' => $request->name,
-                'code' => $request->code,
-                'type' => $request->type,
-                'detail' => $request->detail,
-                'price' => $request->price,
-            ]);
+             // 商品登録
+             Item::create([
+                 'user_id' => Auth::user()->id,
+                 'name' => $request->name,
+                 'type' => $request->type,
+                 'detail' => $request->detail,
+                 'price' => $request->price,
+             ]);
 
-            return redirect('/items');
-        }
+             return redirect('/items');
+         }
 
-        return view('item.add');
-    }
-
+         return view('item.add');
+     }
 
     /**
      * 商品削除
@@ -71,14 +81,4 @@ class ItemController extends Controller
 
         return redirect('/items');
     }
- 
-    /**
-    *新しい画面
-    */
-    public function abc()
-    {
-        return view('item.abc');
-    }
-
-    
 }

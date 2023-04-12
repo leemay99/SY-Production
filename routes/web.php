@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Middleware;
 use App\Providers;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +25,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
+    Route::get('/search', [App\Http\Controllers\ItemController::class, 'search']);
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::get('/abc', [App\Http\Controllers\ItemController::class, 'abc']);
     Route::post('/delete',[App\Http\Controllers\ItemController::class, 'delete']);
+
+    
+    
 });

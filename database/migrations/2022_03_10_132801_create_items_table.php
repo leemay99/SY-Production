@@ -17,10 +17,10 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned()->index();
             $table->string('name', 100)->index();
-            $table->string('code', 100);
             $table->string('status', 100)->default('active');
             $table->smallInteger('type')->nullable();
             $table->string('detail', 500)->nullable();
+            $table->integer('price');
             $table->timestamps();
         });
     }
