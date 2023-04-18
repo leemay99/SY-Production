@@ -16,8 +16,7 @@ return [
 
     
     'title' => '商品管理',
-    
-    
+    'title' => '商品管理',
     'title_prefix' => '',
     'title_postfix' => '',
 

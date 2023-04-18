@@ -5,7 +5,7 @@
 @section('content_header')
     <h1>商品一覧</h1>
     <!-- 検索バー追加 -->  
-    <form class="search" action="{{ url('items/search') }}">
+    <form class="search" action="{{ url('items') }}">
                    <div>
                        <input type="search" name="search" value="{{request('search')}}" placeholder="キーワード入力">
                        <input class="search-btn" type="submit" value="検索する">
@@ -34,7 +34,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>名前</th>
-                                <th>種別</th>
                                 <th>価格</th>
                                 <th>詳細</th>
                                 <th>操作</th>
@@ -45,7 +44,7 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->type }}</td>
+                                    
                                     <td>{{ number_format($item->price) }}</td>
                                     <td>{{ $item->detail }}</td>
                                     <td>
@@ -56,7 +55,8 @@
                                             <input type="submit" value="削除" class="btn btn-danger">
                                        </form>
                                     </td>
-                                </tr>
+                                    <td><a href="/items/edit/{{$item->id}}"><button type="button" class="btn btn-sm btn-outline-primary" >編集</button></a></td>
+                                 </tr>
                             @endforeach
                         </tbody>
                     </table>

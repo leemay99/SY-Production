@@ -24,23 +24,20 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         // 商品一覧取得
-        $items = Item
-            ::where('items.status', 'active')
-            ->select()
-            ->get();
-
+        $query = Item
+            ::where('items.status', 'active');
+            
+        if ($request->search){
+            $query->where('items.name','LIKE','%'.$request->search.'%');
+        }
+        
+        $items=$query->get();
+        
         return view('item.index', compact('items'));
+
     }
 
-    /**
-     * 検索
-     */
-    public function search(Request $request)
-    {
-        
-        dd($request->search);
-        
-    }
+    
                
 
 
@@ -81,4 +78,38 @@ class ItemController extends Controller
 
         return redirect('/items');
     }
+
+    /**
+     * 編集
+     */
+    public function edit(Request $request,$id)
+    {
+        $types = Item::TYPES;
+        $item = Item::find($id);
+    
+        
+
+        return view('item.edit', ['item'=>$item]);
+    }
+
+
+
+
+
+    public function update(Request $request, $id)
+    {
+        // dd($item);
+        $item = Item::find($id);
+        $item->user_id = Auth::id();
+        //$item->user_id = 1;//後から上の行と変更する
+        $item->name = $request->input(["name"]);
+        $item->type = $request->input(["type"]);
+        $item->price = $request->input(["price"]);
+        $item->detail = $request->input(["detail"]);
+        
+        $item->save();
+
+        return redirect('/items');
+    }
 }
+

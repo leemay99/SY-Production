@@ -19,6 +19,14 @@ class Item extends Model
         'price',
     ];
 
+    // カテゴリー
+    const TYPES = [
+        'name' ,
+        'price' ,
+    ];
+
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

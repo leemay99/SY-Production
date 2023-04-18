@@ -28,9 +28,13 @@ Route::prefix('items')->group(function () {
     Route::get('/search', [App\Http\Controllers\ItemController::class, 'search']);
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
-    Route::get('/abc', [App\Http\Controllers\ItemController::class, 'abc']);
     Route::post('/delete',[App\Http\Controllers\ItemController::class, 'delete']);
 
+    Route::post('/update/{items}',[App\Http\Controllers\ItemController::class, 'update']);
+
+   //商品変更画面
+    Route::get('/edit/{items}', [App\Http\Controllers\ItemController::class, 'edit']);
     
     
+
 });
