@@ -98,7 +98,12 @@ class ItemController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($item);
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+            'price' => 'required',
+        ]);
+        
         $item = Item::find($id);
         $item->user_id = Auth::id();
         //$item->user_id = 1;//後から上の行と変更する
